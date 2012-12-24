@@ -1,0 +1,120 @@
+.icon_1 {
+	position: relative;
+	left: 13px !important;
+	top: 20px !important;
+	background-size: 45px 45px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(icons/widget_arc.png) !important;
+	width: 45px !important;
+	height: 45px !important;
+}
+.icon_2 {
+	position: relative;
+	left: 13px !important;
+	top: 20px !important;
+	background-size: 45px 45px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(icons/widget_hands.png) !important;
+	width: 45px !important;
+	height: 45px !important;
+}
+.icon_3 {
+	position: relative;
+	left: 13px !important;
+	top: 20px !important;
+	background-size: 45px 45px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(icons/widget_clap.png) !important;
+	width: 45px !important;
+	height: 45px !important;
+}
+.icon_4 {
+	position: relative;
+	left: 13px !important;
+	top: 20px !important;
+	background-size: 45px 45px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(icons/widget_both.png) !important;
+	width: 45px !important;
+	height: 45px !important;
+}
+.icon_5 {
+	position: relative;
+	left: 13px !important;
+	top: 20px !important;
+	background-size: 45px 45px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(icons/widget_punch.png) !important;
+	width: 45px !important;
+	height: 45px !important;
+}
+.icon_6 {
+	position: relative;
+	left: 13px !important;
+	top: 20px !important;
+	background-size: 45px 45px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(icons/widget_wave.png) !important;
+	width: 45px !important;
+	height: 45px !important;
+}
+.icon_7 {
+	position: relative;
+	left: 13px !important;
+	top: 20px !important;
+	background-size: 45px 45px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(icons/widget_body.png) !important;
+	width: 45px !important;
+	height: 45px !important;
+}
+.icon_8 {
+	position: relative;
+	left: 13px !important;
+	top: 20px !important;
+	background-size: 45px 45px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(icons/widget_punch.png) !important;
+	width: 45px !important;
+	height: 45px !important;
+}
+label.ui-button.ui-widget.ui-state-default[for=widget1]{
+width: 70px;
+height:70px;
+}
+label.ui-button.ui-widget.ui-state-default[for=widget2]{
+width: 70px;
+height:70px;
+}
+label.ui-button.ui-widget.ui-state-default[for=widget3]{
+width: 70px;
+height:70px;
+}
+label.ui-button.ui-widget.ui-state-default[for=widget4]{
+width: 70px;
+height:70px;
+}
+label.ui-button.ui-widget.ui-state-default[for=widget5]{
+width: 70px;
+height:70px;
+}
+label.ui-button.ui-widget.ui-state-default[for=widget6]{
+width: 70px;
+height:70px;
+}
+label.ui-button.ui-widget.ui-state-default[for=widget7]{
+width: 70px;
+height:70px;
+}
+label.ui-button.ui-widget.ui-state-default[for=widget8]{
+width: 70px;
+height:70px;
+}

@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title> KIB - Kinect Instrument Builder </title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="farbtastic/farbtastic.js"></script>
+		<!--<script type="text/javascript" src="js/main.js"></script>-->
+		<script type="text/javascript" src="js/widgets/arc.js"></script>
+		<script type="text/javascript" src="js/widgets/hand.js"></script>
+		<script type="text/javascript" src="js/widgets/kiblet.js"></script>
+		<script type="text/javascript" src="js/widgets/bg.js"></script>
+		<script type="text/javascript" src="js/widgetsettings.js"></script>
+
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/cupertino/jquery-ui.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="farbtastic/farbtastic.css" type="text/css" />
+		<link rel="stylesheet" href="css/kinect.css" type="text/css" />
+		<link rel="stylesheet" href="css/icons.css" type="text/css" />
+		<script type='text/javascript'>
+			$(document).ready(function() {
+				var info = initPage();
+				var ctx = $('#visualization').get(0).getContext("2d");
+				var imgo = new Image();
+				imgo.src = "static/mockupvis.png";
+				imgo.onload = function() {
+					ctx.drawImage(imgo, 0, 0, 640, 480);
+				};
+			});
+		</script>
+	</head>
+	<body>
+		<table><tr height=97%>
+		<td width=800px valign=top>
+				<h1><b>K</b>inect <b>I</b>nstrument <b>B</b>uilder</h1>
+			<div id='imagecontainer'>
+			<div id='visualcontainer'>
+				<canvas id='visualization' width=640px height=480px></canvas>
+			</div>
+			<div id='timeline'>
+				<img src="static/mockupvis.png" height=100px>
+			</div>
+			</div>
+		</td><td width=800px>
+			<div id='widgetpicker'>
+			</div>
+            <div id='widgetsettingscontainer'>
+            </div>
+				<div id='savebuttons'>
+				<button class='kiblet_new'>New Kiblet</button> <button class='kiblet_save'>Save Kiblet</button> <button class='ki_save' style='float:right;'>Save Ki</button>
+				</div>
+			</td>
+			</tr></table>
+	</body>
+</html>
