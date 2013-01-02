@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\osc">
+      <UniqueIdentifier>{e734a5d7-f98f-421d-9581-385b800c5cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ip">
+      <UniqueIdentifier>{5f649eba-6700-4573-be22-5768e29a0de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ip\win32">
+      <UniqueIdentifier>{a3b506bb-b71f-4470-945c-aff225af861d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\osc">
+      <UniqueIdentifier>{6fb2f59b-2f56-4702-b7cd-7837b550eee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ip">
+      <UniqueIdentifier>{c9a31f0c-178d-47a4-980a-ed3f8b53c806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\json">
+      <UniqueIdentifier>{a1b206e0-7955-4627-ac9f-59b76851402f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="osc\OscOutboundPacketStream.cpp">
+      <Filter>Source Files\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="osc\OscTypes.cpp">
+      <Filter>Source Files\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="osc\OscPrintReceivedElements.cpp">
+      <Filter>Source Files\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="osc\OscReceivedElements.cpp">
+      <Filter>Source Files\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="ip\IpEndpointName.cpp">
+      <Filter>Source Files\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="ip\win32\NetworkingUtils.cpp">
+      <Filter>Source Files\ip\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="ip\win32\UdpSocket.cpp">
+      <Filter>Source Files\ip\win32</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="osc\MessageMappingOscPacketListener.h">
+      <Filter>Header Files\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="osc\OscException.h">
+      <Filter>Header Files\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="osc\OscHostEndianness.h">
+      <Filter>Header Files\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="osc\OscOutboundPacketStream.h">
+      <Filter>Header Files\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="osc\OscPacketListener.h">
+      <Filter>Header Files\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="osc\OscPrintReceivedElements.h">
+      <Filter>Header Files\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="osc\OscReceivedElements.h">
+      <Filter>Header Files\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="osc\OscTypes.h">
+      <Filter>Header Files\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="ip\IpEndpointName.h">
+      <Filter>Header Files\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="ip\NetworkingUtils.h">
+      <Filter>Header Files\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="ip\PacketListener.h">
+      <Filter>Header Files\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="ip\TimerListener.h">
+      <Filter>Header Files\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="ip\UdpSocket.h">
+      <Filter>Header Files\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="json\autolink.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\config.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\features.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\forwards.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\json.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\reader.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\value.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\writer.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
