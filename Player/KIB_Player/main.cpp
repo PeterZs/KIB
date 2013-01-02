@@ -44,9 +44,30 @@ int main(int argc, char* argv[]) {
 	cout << "Root object has " << root.size() << " elements" << endl;
 	UdpTransmitSocket transmitSocket(IpEndpointName(address, port));
 
-	// osc::OutboundPacketStream p(buffer, output_buffer_size);
-	// p << osc::BeginBundleImmediate << osc::BeginMessage("/abc")
-	//         << contents
-	// << osc::EndMessage << osc::EndBundle;
-	// transmitSocket.Send(p.Data(), p.Size());
 }
+
+/*
+	App(transmitSocket, root);
+	void update() {
+		if (state == PLAYING) {
+			handler.updateSkeleton();
+			handler.updateRGB(rgbbuf);
+			handler.updateDepth(depthbuf);
+			if (nextKibletReady()) {
+				kiblet = kiblets[curr+1];
+			}
+			kiblet.sendOscMessages(transmitSocket, handler.getSkeleton());
+		} else if (state == PAUSE) {
+		} else if (state == INIT) {
+		}
+	}
+	void draw() {
+		if (state == PLAYING || state == PAUSE) {
+			kiblet.draw();
+			// Draw menu?
+		} else if (state == INIT) {
+			// Draw menu
+		}
+
+	}
+*/
