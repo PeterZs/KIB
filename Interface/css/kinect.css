@@ -19,8 +19,18 @@ border: 9px solid #000;
 margin: 0px auto;
 display:block;
 }
+#timelinecontainer {
+    margin: 5px;
+    width: 720px;
+    height: 120px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
 #timeline {
-margin: 5px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -50,4 +60,15 @@ padding: 15px;
 	border-radius: 20px;
 	-moz-border-radius: 20px;
 border: 1px solid #000;
+}
+
+#timeline li.timelinekiblet {
+    display:inline;
+}
+td > h1 {
+    margin-bottom: 10px;
+}
+td {
+    padding-left: 3px;
+    padding-right: 3px;
 }

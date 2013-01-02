@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="css/icons.css" type="text/css" />
 		<script type='text/javascript'>
 			$(document).ready(function() {
-				var info = initPage();
+				var info = DomWidgetManager();
 				var ctx = $('#visualization').get(0).getContext("2d");
 				var imgo = new Image();
 				imgo.src = "static/mockupvis.png";
@@ -34,8 +34,9 @@
 			<div id='visualcontainer'>
 				<canvas id='visualization' width=640px height=480px></canvas>
 			</div>
-			<div id='timeline'>
-				<img src="static/mockupvis.png" height=100px>
+			<div id='timelinecontainer'>
+                <ul id='timeline'>
+                </ul>
 			</div>
 			</div>
 		</td><td width=800px>
