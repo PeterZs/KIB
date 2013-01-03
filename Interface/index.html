@@ -9,6 +9,9 @@
 		<script type="text/javascript" src="js/widgets/property.js"></script>
 		<script type="text/javascript" src="js/widgets/widget.js"></script>
 		<script type="text/javascript" src="js/widgetsettings.js"></script>
+		<script type="text/javascript" src="js/visual/backgroundvisual.js"></script>
+		<script type="text/javascript" src="js/visual/widgetvisual.js"></script>
+		<script type="text/javascript" src="js/visual/visual.js"></script>
 
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/cupertino/jquery-ui.css" type="text/css" media="all" />
 		<link rel="stylesheet" href="farbtastic/farbtastic.css" type="text/css" />
@@ -17,12 +20,11 @@
 		<script type='text/javascript'>
 			$(document).ready(function() {
 				var info = DomWidgetManager();
-				var ctx = $('#visualization').get(0).getContext("2d");
-				var imgo = new Image();
-				imgo.src = "static/mockupvis.png";
-				imgo.onload = function() {
-					ctx.drawImage(imgo, 0, 0, 640, 480);
-				};
+                var skel = Skeleton();
+                setInterval(function() {
+                    skel.update();
+                    render(info.kib.getKiblet(info.kib.getActiveKiblet()), skel);
+                },30);
 			});
 		</script>
 	</head>

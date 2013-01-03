@@ -123,9 +123,13 @@ var DomWidgetManager = function() {
 	$('button.kiblet_new').button();
 	$('button.ki_save').button();
 	$('#widgetsettingscontainer').accordion();
-	$('#widgetsettingscontainer').click(function() {
+	$('#widgetsettingscontainer').mousedown(function() {
         saveCurrentKiblet(domwidgets, kib);
     });
+    setInterval(function() {
+        saveCurrentKiblet(domwidgets, kib);
+    },100);
+
 
     var ret = {
         widgets: domwidgets, 
@@ -170,6 +174,7 @@ var DomWidgetManager = function() {
         ret.kib.setActiveKiblet(curr+1);
         ret.loadKib();
     });
+    saveCurrentKiblet(domwidgets, kib);
     return ret;
 };
 

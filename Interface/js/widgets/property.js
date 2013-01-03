@@ -40,18 +40,33 @@ var TextProperty = function(prefix, lbl, change) {
     };
     return that;
 };
-var ColorProperty = function(prefix, lbl, change) {
+var ColorProperty = function(prefix, lbl, change, num) {
     var id = prefix;
     var label = lbl;
+    var n = num?num:1;
     var that = {
         update: function(v) {
-            $.farbtastic('#' + id,change?change:null).setColor(v?v:"#000000");
+            for (var i = 0; i < n; ++i) {
+                $.farbtastic('#' + id + i, change?change:null).setColor(v?v:"#000000");
+            }
         },
         getHtml: function() {
-            return "<div class='setting'>" + label + "<br><div id='" + id + "'></div></div>";
+            var ret = "<div class='setting'>" + label + "<br><table><tr>";
+            for (var i = 0; i < n; ++i) {
+                ret += "<td><div id='" + id + i + "'></div></td>";
+            }
+            return ret + "</tr></table></div>";
         },
-        getValue: function() {
-            return $.farbtastic('#' + id).color;
+        getValue: function(i) {
+            if (i >= 0 && i < n) {
+                return $.farbtastic('#' + id + i).color;
+            } else {
+                var ret = "";
+                for (var i = 0; i < n; ++i) {
+                    ret += $.farbtastic('#' + id + i).color + " ";
+                }
+                return ret;
+            }
         },
         id: id,
     };
