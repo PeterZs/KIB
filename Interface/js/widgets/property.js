@@ -40,14 +40,14 @@ var TextProperty = function(prefix, lbl, change) {
     };
     return that;
 };
-var ColorProperty = function(prefix, lbl, change, num) {
+var ColorProperty = function(prefix, lbl, def, change, num) {
     var id = prefix;
     var label = lbl;
     var n = num?num:1;
     var that = {
         update: function(v) {
             for (var i = 0; i < n; ++i) {
-                $.farbtastic('#' + id + i, change?change:null).setColor(v?v:"#000000");
+                $.farbtastic('#' + id + i, change?change:null).setColor(v?v:def);
             }
         },
         getHtml: function() {

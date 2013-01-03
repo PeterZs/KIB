@@ -116,8 +116,8 @@ var BgWidget = Widget('Background', 'background', [
                  {id:'bg_style_solid',label:'Solid Color',change:showColor2},
                  {id:'bg_style_stars',label:'Starfield',change:showColor2},
                  {id:'bg_style_psychedelic',label:'Psychedelic',change:showColor2}]),
-        ColorProperty('bg_style_color', 'Background Color', saveColors, 2),
-        ColorProperty('fg_style_color', 'Foreground Color', saveColors),
+        ColorProperty('bg_style_color', 'Background Color', '#ff0000', saveColors, 2),
+        ColorProperty('fg_style_color', 'Foreground Color', '#ffffff', saveColors),
     ], 'default');
 var KibletWidget = Widget('Kiblet', 'kiblet', [
         TextProperty('kiblet_name', 'Kiblet Name', function() {

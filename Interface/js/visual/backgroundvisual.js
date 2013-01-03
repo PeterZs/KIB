@@ -106,22 +106,24 @@ function renderSkeletonAvatar(skeleton, ctx, color, w, h) {
     ctx.beginPath();
     var cv = skeleton.joint('head',w,h);
     ctx.moveTo(cv[0], cv[1]);
-    var cv = skeleton.joint('hips',w,h);
+    cv = skeleton.joint('hips',w,h);
     ctx.lineTo(cv[0], cv[1]);             // Draw neck and body
-    var cv = skeleton.joint('leftfoot',w,h);
+    cv = skeleton.joint('leftfoot',w,h);
     ctx.lineTo(cv[0], cv[1]);             // Draw left leg
-    var cv = skeleton.joint('hips',w,h);
+    cv = skeleton.joint('hips',w,h);
     ctx.moveTo(cv[0], cv[1]);
-    var cv = skeleton.joint('rightfoot',w,h);
+    cv = skeleton.joint('rightfoot',w,h);
     ctx.lineTo(cv[0], cv[1]);             // Draw right leg
-    var cv = skeleton.joint('lefthand',w,h);
+    cv = skeleton.joint('lefthand',w,h);
     ctx.moveTo(cv[0], cv[1]);
-    var cv = skeleton.joint('leftshoulder',w,h);
+    ctx.arc(cv[0], cv[1], 5, 0, 2*Math.PI);
+    cv = skeleton.joint('leftshoulder',w,h);
     ctx.lineTo(cv[0], cv[1]);             // Draw left arm
-    var cv = skeleton.joint('rightshoulder',w,h);
+    cv = skeleton.joint('rightshoulder',w,h);
     ctx.lineTo(cv[0], cv[1]);             // Draw shoulders
-    var cv = skeleton.joint('righthand',w,h);
+    cv = skeleton.joint('righthand',w,h);
     ctx.lineTo(cv[0], cv[1]);             // Draw right arm
+    ctx.arc(cv[0], cv[1], 5, 0, 2*Math.PI);
     ctx.stroke();
 }
 function renderImageAvatar(skeleton, ctx, color, w, h) {
@@ -139,14 +141,14 @@ function renderPolygonsAvatar(skeleton, ctx, color, w, h) {
 }
 
 function renderAvatar(widget, skeleton, ctx, w, h) {
-    if (widget['fg_style_picker'] == 'fg_style_img') {
-        renderImageAvatar(skeleton, ctx, w, h);
-    } else if (widget['fg_style_picker'] == 'fg_style_silhouette') {
-        renderSilhouetteAvatar(skeleton, ctx, widget['fg_style_colorpicker'], w, h);
-    } else if (widget['fg_style_picker'] == 'fg_style_skeleton') {
-        renderSkeletonAvatar(skeleton, ctx, widget['fg_style_colorpicker'], w, h);
-    } else if (widget['fg_style_picker'] == 'fg_style_polygon') {
-        renderPolygonsAvatar(skeleton, ctx, widget['fg_style_colorpicker'], w, h);
+    if (widget['avatar_style_picker'] == 'avatar_style_img') {
+        renderImageAvatar(skeleton, ctx, widget['fg_style_color'], w, h);
+    } else if (widget['avatar_style_picker'] == 'avatar_style_silhouette') {
+        renderSilhouetteAvatar(skeleton, ctx, widget['fg_style_color'], w, h);
+    } else if (widget['avatar_style_picker'] == 'avatar_style_skeleton') {
+        renderSkeletonAvatar(skeleton, ctx, widget['fg_style_color'], w, h);
+    } else if (widget['avatar_style_picker'] == 'avatar_style_polygon') {
+        renderPolygonsAvatar(skeleton, ctx, widget['fg_style_color'], w, h);
     }
 }
 

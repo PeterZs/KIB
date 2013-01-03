@@ -21,6 +21,7 @@
 			$(document).ready(function() {
 				var info = DomWidgetManager();
                 var skel = Skeleton();
+                skel.initHandlers();
                 setInterval(function() {
                     skel.update();
                     render(info.kib.getKiblet(info.kib.getActiveKiblet()), skel);
