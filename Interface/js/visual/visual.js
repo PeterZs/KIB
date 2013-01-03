@@ -1,3 +1,4 @@
+// TODO: Random hand motion
 function toBody(x, w, h) {
     var m = w<h?w:h;
     return [(x[0] - w/2)/m, (h - x[1])/m];
@@ -102,6 +103,7 @@ var Skeleton = function() {
                 var bc = toBody([x,y], w, h);
                 move[currdrag](bc[0], bc[1]);
             });
+            canvasel.disableSelection();
         },
         joint: function(which, w, h) {
             return toCanvas(joints[which], w, h);

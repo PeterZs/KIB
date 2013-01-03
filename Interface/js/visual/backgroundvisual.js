@@ -54,7 +54,7 @@ function renderStars(ctx, w, h) {
 function renderPsychedelic(ctx, colors, w, h) {
     // FIXME: What does psychedelic mean?
     var x = w/2;
-    var y = y/2;
+    var y = h/2;
     var gradient = ctx.createRadialGradient(x,y,5,x,y,(x>y?x:y));
     gradient.addColorStop(0, c1);
     gradient.addColorStop(1, c2);
@@ -103,6 +103,7 @@ function ovalfrom(ctx, x1, y1, x2, y2, w) {
 
 function renderSkeletonAvatar(skeleton, ctx, color, w, h) {
     ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
     ctx.beginPath();
     var cv = skeleton.joint('head',w,h);
     ctx.moveTo(cv[0], cv[1]);

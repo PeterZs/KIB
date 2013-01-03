@@ -6,8 +6,6 @@ function renderBall() {
 }
 function renderWave() {
 }
-function renderHands() {
-}
 function renderPunch() {
 }
 function renderClap() {

@@ -54,6 +54,7 @@ var HandWidget = Widget('Hands', 'hands', [
         SelectProperty('hands_visualization', 'Visualization',
                 [{id:'hands_vis_none',label:'None'},
                  {id:'hands_vis_neon',label:'Neon'}]),
+        ColorProperty('hands_color', 'Hand Effect Color', '#ff00ff'),
         TextProperty('hands_osc_msg', 'OSC Message Name')
     ]);
 var BallWidget = Widget('Ball', 'ball', [
