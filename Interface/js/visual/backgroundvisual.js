@@ -63,8 +63,9 @@ function renderPsychedelic(ctx, colors, w, h) {
 }
 
 function renderBg(widget, ctx, w, h) {
-    var c1 = $.trim(widget['bg_style_color'].split(" ")[0]);
-    var c2 = $.trim(widget['bg_style_color'].split(" ")[1]);
+    var colors = widget['bg_style_color'] || "#ff0000 #000000";
+    var c1 = $.trim(colors.split(" ")[0]);
+    var c2 = $.trim(colors.split(" ")[1]);
     if (widget['bg_style_picker'] == 'bg_style_stars') {
         renderStars(ctx, w, h);
     } else {

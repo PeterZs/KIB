@@ -22,7 +22,8 @@ var Widget = function(heading, kidgetname, properties, type) {
     var save = function(kiblet) {
         kiblet[kidgetname] = {};
         for (var i = 0; i < properties.length; ++i) {
-            kiblet[kidgetname][properties[i].id] = properties[i].getValue();
+            var p = properties[i].getValue();
+            if (p) kiblet[kidgetname][properties[i].id] = p;
         }
     };
     var reset = function(kiblet) {

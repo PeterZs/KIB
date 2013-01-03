@@ -46,8 +46,15 @@ var ColorProperty = function(prefix, lbl, def, change, num) {
     var n = num?num:1;
     var that = {
         update: function(v) {
-            for (var i = 0; i < n; ++i) {
-                $.farbtastic('#' + id + i, change?change:null).setColor(v?v:def);
+            if (v) {
+                var colors = v.split(" ");
+                for (var i = 0; i < n; ++i) {
+                    $.farbtastic('#' + id + i, change?change:null).setColor(colors[i]);
+                }
+            } else {
+                for (var i = 0; i < n; ++i) {
+                    $.farbtastic('#' + id + i, change?change:null).setColor(def);
+                }
             }
         },
         getHtml: function() {
