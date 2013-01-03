@@ -49,14 +49,14 @@ var ArcWidget = Widget('Arc', 'arc', [
                  {id:'arc_vis_arc',label:'Arc'},
                  {id:'arc_vis_points',label:'Points'},
                  ]),
-        TextProperty('arc_osc_msg', 'OSC Message Name')
+        TextProperty('arc_osc_msg', 'OSC Message Name', '/ArcMessage')
     ]);
 var HandWidget = Widget('Hands', 'hands', [
         SelectProperty('hands_visualization', 'Visualization',
                 [{id:'hands_vis_none',label:'None'},
                  {id:'hands_vis_neon',label:'Neon'}]),
         ColorProperty('hands_color', 'Hand Effect Color', '#ff00ff'),
-        TextProperty('hands_osc_msg', 'OSC Message Name')
+        TextProperty('hands_osc_msg', 'OSC Message Name', '/HandsMessage')
     ]);
 var BallWidget = Widget('Ball', 'ball', [
         SelectProperty('ball_visualization', 'Visualization',
@@ -65,14 +65,15 @@ var BallWidget = Widget('Ball', 'ball', [
                  {id:'ball_vis_lightning',label:'Lightning'},
                  {id:'ball_vis_ball',label:'Ball'},
                  ]),
-        TextProperty('ball_osc_msg', 'OSC Message Name')
+        ColorProperty('ball_color', 'Ball Effect Color', '#00ff00'),
+        TextProperty('ball_osc_msg', 'OSC Message Name', '/BallMessage')
     ]);
 var BodyWidget = Widget('Body', 'body', [
         SelectProperty('body_visualization', 'Visualization',
                 [{id:'body_vis_none',label:'None'},
                  {id:'body_vis_line',label:'Line'},
                  ]),
-        TextProperty('body_osc_msg', 'OSC Message Name')
+        TextProperty('body_osc_msg', 'OSC Message Name', '/BodyMessage')
     ]);
 var WaveWidget = Widget('Wave', 'wave', [
         SelectProperty('wave_visualization', 'Visualization',
@@ -80,23 +81,23 @@ var WaveWidget = Widget('Wave', 'wave', [
                  {id:'wave_vis_knob',label:'Knob'},
                  {id:'wave_vis_pie',label:'Pie'},
                  ]),
-        TextProperty('wave_osc_msg', 'OSC Message Name')
+        TextProperty('wave_osc_msg', 'OSC Message Name', '/WaveMessage')
     ]);
 var PunchWidget = Widget('Punch', 'punch', [
         SelectProperty('punch_visualization', 'Visualization',
                 [{id:'punch_vis_none',label:'None'},
                  {id:'punch_vis_flash',label:'Flash'},
-                 {id:'punch_vis_pow',label:'Pow'},
+                 {id:'punch_vis_rings',label:'Rings'},
                  ]),
-        TextProperty('punch_osc_msg', 'OSC Message Name')
+        TextProperty('punch_osc_msg', 'OSC Message Name', '/PunchMessage')
     ]);
 var ClapWidget = Widget('Clap', 'clap', [
         SelectProperty('clap_visualization', 'Visualization',
                 [{id:'clap_vis_none',label:'None'},
                  {id:'clap_vis_flash',label:'Flash'},
-                 {id:'clap_vis_pow',label:'Pow'},
+                 {id:'clap_vis_rings',label:'Rings'},
                  ]),
-        TextProperty('clap_osc_msg', 'OSC Message Name')
+        TextProperty('clap_osc_msg', 'OSC Message Name', '/ClapMessage')
     ]);
 function showColor2(e) {
     if ($("#bg_style_gradient").attr('checked')) $("#bg_style_color1").show();
@@ -104,7 +105,7 @@ function showColor2(e) {
 }
 var saveColors = function() {
     // HACK: Click on the save kiblet button
-    $("button.kiblet_save").click();
+    if ($('#bg_style_color').length > 0) $("button.kiblet_save").click();
 }
 
 var BgWidget = Widget('Background', 'background', [
@@ -122,7 +123,7 @@ var BgWidget = Widget('Background', 'background', [
         ColorProperty('fg_style_color', 'Foreground Color', '#ffffff', saveColors),
     ], 'default');
 var KibletWidget = Widget('Kiblet', 'kiblet', [
-        TextProperty('kiblet_name', 'Kiblet Name', function() {
+        TextProperty('kiblet_name', 'Kiblet Name', 'Untitled Kiblet', function() {
                                                        var id = $("input[name=timelinekiblets]:checked").attr('id');
                                                        $('#' + id + '_label').html($('#kiblet_name').val());
                                                    }
@@ -141,7 +142,7 @@ var KibletWidget = Widget('Kiblet', 'kiblet', [
                                                                         $('#kiblet_trigger_info_label').html("OSC Event Name");
                                                                     }
              }]),
-        TextProperty('kiblet_trigger_info', 'Start Time (mm:ss)'),
+        TextProperty('kiblet_trigger_info', 'Start Time (mm:ss)', '0:00'),
         {
              update: function() { 
                  $('button.kiblet_save').button();

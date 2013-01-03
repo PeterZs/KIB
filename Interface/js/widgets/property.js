@@ -22,16 +22,16 @@ var SliderProperty = function(prefix, lbl, min, max, onslide) {
     };
     return that;
 };
-var TextProperty = function(prefix, lbl, change) {
+var TextProperty = function(prefix, lbl, def, change) {
     var id = prefix;
     var label = lbl;
     var that = {
         update: function(v) {
-            $("#" + id).val(v);
+            $("#" + id).val(v || def);
             if (change) $("#" + id).change(change);
         },
         getHtml: function() {
-            return "<div class='setting'><label id='" + id + "_label' for='" + id + "'>" + label + "</label><br><input type='text' id='" + id + "' /></div>";
+            return "<div class='setting'><label id='" + id + "_label' for='" + id + "'>" + label + "</label><br><input type='text' id='" + id + "' value='" + def + "' /></div>";
         },
         getValue: function() {
             return $("#" + id).val();
