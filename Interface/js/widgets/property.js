@@ -3,13 +3,15 @@ var SliderProperty = function(prefix, lbl, min, max, onslide) {
     var label = lbl;
     var that = {
         update: function(v) {
+            v = (v>=min && v <= max)?v:min;
             $('#' + id).slider({
-                value:(v>=min && v <= max)?v:min,
+                value:v,
                 min:min,
                 max:max,
                 step:1,
                 slide: onslide
             });
+            if (onslide) onslide(null,{value:v});
         },
         getHtml: function() {
             return "<div class='setting'>" + label + "<div id='" + id + "' width=200px>" +
