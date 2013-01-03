@@ -77,10 +77,10 @@ function createTimelineKiblet(i, dommanager) {
     $("#timeline").append(newelt);
     $("#timelinekiblet" + i).change({index:i}, function(e) {
         if (this.checked) {
+            saveCurrentKiblet(dommanager.widgets, dommanager.kib);
             var k = e.data.index;
             dommanager.kib.setActiveKiblet(k);
             dommanager.loadKibletSettings(dommanager.kib.getKiblet(k));
-            saveCurrentKiblet(dommanager.widgets, dommanager.kib);
         }
     });
     $("#timelinekiblet" + i).button().disableSelection();
@@ -121,6 +121,8 @@ var DomWidgetManager = function() {
     // Initialize buttons
 	$('button.kiblet_save').button();
 	$('button.kiblet_new').button();
+	$('button.kiblet_delete').button();
+	$('button.kiblet_delete').button("disable");
 	$('button.ki_save').button();
 	$('#widgetsettingscontainer').accordion();
 	$('#widgetsettingscontainer').mousedown(function() {
@@ -150,6 +152,8 @@ var DomWidgetManager = function() {
         loadKib: function() {
             addKibletsToTimeline(ret);
             ret.loadKibletSettings(ret.kib.getKiblet(ret.kib.getActiveKiblet()));
+            if (ret.kib.getKiblets().length == 1) $("button.kiblet_delete").button('disable');
+            else $("button.kiblet_delete").button('enable');
         },
     };
     ret.loadKib();
@@ -159,6 +163,7 @@ var DomWidgetManager = function() {
         initWidgetButton(x, ret);
 	}
     $("#timelinekiblet0").change();
+    saveCurrentKiblet(domwidgets, kib);
     $('button.ki_save').click(function() {
         saveCurrentKiblet(domwidgets, kib);
         downloadfile(ret.kib.save());
@@ -166,7 +171,18 @@ var DomWidgetManager = function() {
     $('button.kiblet_save').click(function() {
         saveCurrentKiblet(domwidgets, kib);
     });
+    $('button.kiblet_delete').click(function() {
+        ret.kib.deleteActiveKiblet();
+        var k = ret.kib.getActiveKiblet();
+        if (k >= ret.kib.getKiblets().length) {
+            k -= 1;
+            ret.kib.setActiveKiblet(k)
+        }
+        ret.loadKib();
+        if (ret.kib.getKiblets().length == 1) $('button.kiblet_delete').button('disable');
+    });
     $('button.kiblet_new').click(function() {
+        $('button.kiblet_delete').button('enable');
         saveCurrentKiblet(domwidgets, kib);
         var kiblets = ret.kib.getKiblets();
         var curr = ret.kib.getActiveKiblet();
@@ -174,7 +190,6 @@ var DomWidgetManager = function() {
         ret.kib.setActiveKiblet(curr+1);
         ret.loadKib();
     });
-    saveCurrentKiblet(domwidgets, kib);
     return ret;
 };
 
