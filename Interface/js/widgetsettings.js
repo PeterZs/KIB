@@ -71,7 +71,7 @@ function createTimelineKiblet(i, dommanager) {
     newelt.addClass("timelinekiblet");
     var currkiblet = dommanager.kib.getKiblet(i);
     var title = "Kiblet " + i;
-    if (currkiblet.kiblet.kiblet_name && currkiblet.kiblet.kiblet_name.getValue()) title = currkiblet.kiblet.kiblet_name.getValue();
+    if (currkiblet.kiblet.kiblet_name) title = currkiblet.kiblet.kiblet_name;
     // TODO: Make this look better
     newelt.append('<input type="radio" name="timelinekiblets" id="timelinekiblet' + i + '"><label id = "timelinekiblet' + i + '_label" for="timelinekiblet' + i + '">' + title + '</label>');
     $("#timeline").append(newelt);
