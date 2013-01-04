@@ -4,7 +4,6 @@ function newKiblet() {
 }
 
 var Kib = function(s) {
-    // FIXME: Initial Instrument
     var kiblets = [newKiblet()];
     var name = s;
     var activeKiblet = 0;

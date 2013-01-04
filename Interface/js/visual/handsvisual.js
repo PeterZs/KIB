@@ -1,3 +1,4 @@
+// TODO: Add flame/lightning visualizations
 // From: http://jeshua.me/blog/SamplingUnivariateGaussianinJavascript
 Math.normrnd = function(mean,std) { 
     if(this.extra == undefined){         

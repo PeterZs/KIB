@@ -97,7 +97,6 @@ function addKibletsToTimeline(dommanager) {
     
     /*$("#timeline").sortable({update: function(event, ui) {
         // FIXME: Change order in array
-        // FIXME: Remove Kiblet
     }});
     $("#timeline").disableSelection();*/
 }
