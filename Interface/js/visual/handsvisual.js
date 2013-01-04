@@ -1,41 +1,4 @@
 // TODO: Add flame/lightning visualizations
-// From: http://jeshua.me/blog/SamplingUnivariateGaussianinJavascript
-Math.normrnd = function(mean,std) { 
-    if(this.extra == undefined){         
-        var u,v;var s = 0; 
-        while(s >= 1 || s == 0){ 
-            u = Math.random()*2 - 1; v = Math.random()*2 - 1; 
-            s = u*u + v*v; 
-        } 
-        var n = Math.sqrt(-2 * Math.log(s)/s); 
-        this.extra = v * n; 
-        return mean + u * n * std; 
-    } else{ 
-        var r = mean + this.extra * std; 
-        this.extra = undefined; 
-        return r; 
-    } 
-}
-function scale(color, brightness) {
-    var ret = [];
-    for (var i = 0; i < 3; ++i) {
-        ret[i] = Math.floor(color[i]*brightness);
-        if (ret[i] > 255) ret[i] = 255;
-        if (ret[i] < 0) ret[i] = 0;
-    }
-    return ret;
-}
-function toRgb(color) {
-    if (!color) return [0,0,0];
-    var r = parseInt(color.substr(1,2), 16);
-    var g = parseInt(color.substr(3,2), 16);
-    var b = parseInt(color.substr(5,2), 16);
-    return [r,g,b];
-}
-function rgba(rgb, a) {
-    return "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + a + ")";
-}
-
 function renderGlowball(p, r, ctx, color) {
     ctx.globalCompositeOperation = 'lighter';
     var gradient = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], r);

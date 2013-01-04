@@ -1,6 +1,3 @@
-// TODO: Arc rendering
-function renderArc() {
-}
 // TODO: Body rendering
 function renderBody() {
 }

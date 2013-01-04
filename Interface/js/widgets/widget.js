@@ -45,10 +45,11 @@ var ArcWidget = Widget('Arc', 'arc', [
             $('#arc_discrete_slider_label').html(ui.value==0?"Continuous":ui.value);
         }),
         SelectProperty('arc_visualization', 'Visualization',
-                [{id:'arc_vis_button',label:'Buttons'},
+                [{id:'arc_vis_none',label:'None'},
+                 {id:'arc_vis_button',label:'Buttons'},
                  {id:'arc_vis_arc',label:'Arc'},
-                 {id:'arc_vis_points',label:'Points'},
                  ]),
+        ColorProperty('arc_color', 'Arc Effect Color', '#ff00ff', null, 2),
         TextProperty('arc_osc_msg', 'OSC Message Name', '/ArcMessage')
     ]);
 var HandWidget = Widget('Hands', 'hands', [
