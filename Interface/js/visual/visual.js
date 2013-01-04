@@ -78,6 +78,10 @@ var Skeleton = function() {
             var m = w<h?w:h;
             return [w/2 + m*x[0], h - m*x[1]];
         },
+        canvasDist: function(d, w, h) {
+            var m = w<h?w:h;
+            return m*d;
+        },
         update: function() {
             // Set random positions for things  
         },
@@ -109,7 +113,10 @@ var Skeleton = function() {
             if (!w && !h) return [joints[which][0], joints[which][1]];
             return that.toCanvas(joints[which], w, h);
         },
-
+        getArmlength: function(w,h) {
+            if (!w || !h) return armlength;
+            return that.canvasDist(armlength, w, h);
+        },
     };
     return that;
 };

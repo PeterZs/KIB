@@ -82,6 +82,12 @@ var WaveWidget = Widget('Wave', 'wave', [
                  {id:'wave_vis_knob',label:'Knob'},
                  {id:'wave_vis_pie',label:'Pie'},
                  ]),
+        SelectProperty('wave_hands', 'Hands to Track',
+                [{id:'wave_hands_both',label:'Both Hands'},
+                 {id:'wave_hands_right',label:'Right Hand Only'},
+                 {id:'wave_hands_left',label:'Left Hand Only'},
+                 ]),
+        ColorProperty('wave_color', 'Wave Effect Color', '#00ff00'),
         TextProperty('wave_osc_msg', 'OSC Message Name', '/WaveMessage')
     ]);
 var PunchWidget = Widget('Punch', 'punch', [
