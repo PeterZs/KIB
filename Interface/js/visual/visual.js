@@ -1,14 +1,4 @@
 // TODO: Random hand motion
-function toBody(x, w, h) {
-    var m = w<h?w:h;
-    return [(x[0] - w/2)/m, (h - x[1])/m];
-}
-function toCanvas(x, w, h) {
-    if (!w) w = 0;
-    if (!h) h = 0;
-    var m = w<h?w:h;
-    return [w/2 + m*x[0], h - m*x[1]];
-}
 function dist2(a,b) {
     return (a[0]-b[0])*(a[0]-b[0]) + (a[1]-b[1])*(a[1]-b[1]);
 }
@@ -78,6 +68,16 @@ var Skeleton = function() {
 
     // Joint locations: Lhand, Rhand, Lshoulder, Rshoulder, Head, Hip
     var that = {
+        toBody: function(x, w, h) {
+            var m = w<h?w:h;
+            return [(x[0] - w/2)/m, (h - x[1])/m];
+        },
+        toCanvas: function(x, w, h) {
+            if (!w) w = 0;
+            if (!h) h = 0;
+            var m = w<h?w:h;
+            return [w/2 + m*x[0], h - m*x[1]];
+        },
         update: function() {
             // Set random positions for things  
         },
@@ -87,7 +87,7 @@ var Skeleton = function() {
                 var x = e.pageX - canvas.offsetLeft;
                 var y = e.pageY - canvas.offsetTop;
                 for (var i = 0; i < draggable.length; ++i) {
-                    if (dist2(toCanvas(joints[draggable[i]], w, h), [x,y]) < sensitivity[i]*sensitivity[i]) {
+                    if (dist2(that.toCanvas(joints[draggable[i]], w, h), [x,y]) < sensitivity[i]*sensitivity[i]) {
                         currdrag = draggable[i];
                         break;
                     }
@@ -100,14 +100,16 @@ var Skeleton = function() {
                 if (!(currdrag in move)) return;
                 var x = e.pageX - canvas.offsetLeft;
                 var y = e.pageY - canvas.offsetTop;
-                var bc = toBody([x,y], w, h);
+                var bc = that.toBody([x,y], w, h);
                 move[currdrag](bc[0], bc[1]);
             });
             canvasel.disableSelection();
         },
         joint: function(which, w, h) {
-            return toCanvas(joints[which], w, h);
+            if (!w && !h) return [joints[which][0], joints[which][1]];
+            return that.toCanvas(joints[which], w, h);
         },
+
     };
     return that;
 };
