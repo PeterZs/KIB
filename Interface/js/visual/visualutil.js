@@ -82,3 +82,30 @@ function arcTo(startangle, endangle, center, r, ctx, ccw, inner) {
     }
 }
 
+function GlowEffect(radius, speed, stdr, stdb) {
+    var last_updated = 0;
+    var r = radius || 30;
+    var b = 1;
+    var cr = r;
+    var cb = b;
+    var sr = stdr || 0.4;
+    var sb = stdb || 0.06;
+    var s = speed || 80;
+    var callback = null;
+    var that = {
+        update: function() {
+            var dr = Math.normrnd(cr-r, sr);
+            var db = Math.normrnd(cb-b, sb);
+            cr -= dr;
+            cb -= db;
+        },
+        getRadius: function() { return cr; },
+        getBrightness: function() { return cb; },
+        modColor: function(color) {
+            var col = (typeof color === 'string')?toRgb(color):color;
+            return scale(col, cb);
+        },
+    };
+    callback = setInterval(that.update, s);
+    return that;
+};
