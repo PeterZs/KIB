@@ -12,6 +12,7 @@ public:
 	bool initSensors();
 	void updateRgb(char* dest);
 	void updateDepth(char* dest);
+	void updateDepthAndPid(float* dest, char* pid);
 	bool updateSkeleton();
 
 	const Vector4* getSkeleton() const { return skeletonPosition; }

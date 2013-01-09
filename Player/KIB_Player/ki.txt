@@ -1,0 +1,26 @@
+[
+  {
+    "background": {
+      "avatar_style_picker": "avatar_style_silhouette",
+      "bg_style_picker": "bg_style_stars",
+      "bg_style_color": "#ff0000 #ff00ff ",
+      "fg_style_color": "#00ff00 "
+    },
+    "kiblet": {
+      "kiblet_name": "Untitled Kiblet",
+      "kiblet_trigger": "kiblet_trigger_time",
+      "kiblet_trigger_info": "0:00"
+    },
+    "hands": {
+      "hands_visualization": "hands_vis_neon",
+      "hands_color": "#ff00ff ",
+      "hands_osc_msg": "/HandsMessage"
+    },
+    "arc": {
+      "arc_discrete_slider": 2,
+      "arc_visualization": "arc_vis_button",
+      "arc_color": "#ff00ff #ff00ff ",
+      "arc_osc_msg": "/ArcMessage"
+    }
+  }
+]

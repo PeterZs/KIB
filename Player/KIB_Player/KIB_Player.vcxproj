@@ -32,10 +32,12 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="KinectSDK.props" />
+    <Import Project="SDL_OpenGL.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="KinectSDK.props" />
+    <Import Project="SDL_OpenGL.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -44,7 +46,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -58,7 +60,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -66,9 +68,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>json.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="app.cpp" />
     <ClCompile Include="ArcKidget.cpp" />
     <ClCompile Include="BackgroundKidget.cpp" />
     <ClCompile Include="BallKidget.cpp" />
@@ -81,15 +85,18 @@
     <ClCompile Include="Kiblet.cpp" />
     <ClCompile Include="KibletKidget.cpp" />
     <ClCompile Include="KinectHandler.cpp" />
+    <ClCompile Include="KIPlayerApp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="osc\OscOutboundPacketStream.cpp" />
     <ClCompile Include="osc\OscPrintReceivedElements.cpp" />
     <ClCompile Include="osc\OscReceivedElements.cpp" />
     <ClCompile Include="osc\OscTypes.cpp" />
     <ClCompile Include="PunchKidget.cpp" />
+    <ClCompile Include="SDLHandler.cpp" />
     <ClCompile Include="WaveKidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="app.h" />
     <ClInclude Include="ArcKidget.h" />
     <ClInclude Include="BackgroundKidget.h" />
     <ClInclude Include="BallKidget.h" />
@@ -113,6 +120,7 @@
     <ClInclude Include="KibletKidget.h" />
     <ClInclude Include="Kidget.h" />
     <ClInclude Include="KinectHandler.h" />
+    <ClInclude Include="KIPlayerApp.h" />
     <ClInclude Include="osc\MessageMappingOscPacketListener.h" />
     <ClInclude Include="osc\OscException.h" />
     <ClInclude Include="osc\OscHostEndianness.h" />
@@ -122,6 +130,7 @@
     <ClInclude Include="osc\OscReceivedElements.h" />
     <ClInclude Include="osc\OscTypes.h" />
     <ClInclude Include="PunchKidget.h" />
+    <ClInclude Include="SDLHandler.h" />
     <ClInclude Include="WaveKidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

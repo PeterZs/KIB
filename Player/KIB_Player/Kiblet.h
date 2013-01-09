@@ -10,11 +10,11 @@ class Kiblet
 public:
 	Kiblet(void);
 	~Kiblet(void);
-	Kiblet(Json::Value v);
+	Kiblet(Json::Value& v);
 
-	void draw();
-	void sendOscMessages(UdpTransmitSocket& transmitSocket, const Vector4* skeletonPositions);
-	static Kidget* makeKidget(std::string type, Json::Value v);
+	void draw(const Vector4* skel, unsigned char* rgb, float* depth, char* pid, int w, int h);
+	void sendOscMessages(UdpTransmitSocket* transmitSocket, const Vector4* skeletonPositions);
+	static Kidget* makeKidget(std::string type, Json::Value& v);
 	bool checkTriggerCondition();
 private:
 	std::vector<Kidget*> kidgets;

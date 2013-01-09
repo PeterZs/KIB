@@ -4,13 +4,12 @@
 #include "json\json.h"
 #include "osc/OscOutboundPacketStream.h"
 #include "ip/UdpSocket.h"
+#include "KIPlayerApp.h"
 
 #pragma comment(lib, "Ws2_32.lib")
 #pragma comment(lib, "winmm.lib")
 
 using namespace std;
-
-// json, osc, kinect. opengl
 
 int main(int argc, char* argv[]) {
 	// Set up OSC communication ports
@@ -41,9 +40,9 @@ int main(int argc, char* argv[]) {
 		int argport = atoi(argv[2]);
 		if (argport > 0) port = argport;
 	}
-	cout << "Root object has " << root.size() << " elements" << endl;
 	UdpTransmitSocket transmitSocket(IpEndpointName(address, port));
-
+	App* app = new KIPlayerApp(&root, &transmitSocket);
+	return app->onExecute();
 }
 
 /*

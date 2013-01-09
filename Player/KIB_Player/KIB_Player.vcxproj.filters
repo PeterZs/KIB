@@ -90,6 +90,15 @@
     <ClCompile Include="KinectHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KIPlayerApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="osc\MessageMappingOscPacketListener.h">
@@ -189,6 +198,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KinectHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KIPlayerApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

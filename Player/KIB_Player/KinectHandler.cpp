@@ -1,4 +1,5 @@
 #include "KinectHandler.h"
+#include <cstdio>
 
 
 KinectHandler::KinectHandler(void)
@@ -6,6 +7,7 @@ KinectHandler::KinectHandler(void)
 	width=640;
 	height=480;
 	skeletonPosition = new Vector4[NUI_SKELETON_POSITION_COUNT];
+	for (int i = 0; i < NUI_SKELETON_POSITION_COUNT; ++i) skeletonPosition[i] = Vector4();
 	initialized = false;
 }
 
@@ -28,9 +30,9 @@ bool KinectHandler::initSensors() {
 		sensor->Release();
 	}
 	if (sensor) {
-		if (sensor->NuiInitialize(NUI_INITIALIZE_FLAG_USES_DEPTH | NUI_INITIALIZE_FLAG_USES_COLOR | NUI_INITIALIZE_FLAG_USES_SKELETON) == 0) {
+		if (sensor->NuiInitialize(NUI_INITIALIZE_FLAG_USES_DEPTH_AND_PLAYER_INDEX | NUI_INITIALIZE_FLAG_USES_COLOR | NUI_INITIALIZE_FLAG_USES_SKELETON) == 0) {
 			result = sensor->NuiImageStreamOpen(
-				NUI_IMAGE_TYPE_DEPTH,			 // Image type
+				NUI_IMAGE_TYPE_DEPTH_AND_PLAYER_INDEX,			 // Image type
 				NUI_IMAGE_RESOLUTION_640x480,	 // Resolution
 				0,								 // Image stream flags, e.g. near mode, player indices (?) min/max depth (?)
 				//NUI_IMAGE_STREAM_FLAG_ENABLE_NEAR_MODE,
@@ -100,9 +102,35 @@ void KinectHandler::updateDepth(char* dest) {
 		char* from = start;
 
 		while (from != dataEnd) {
-			*to++ = *from++;
-			// FIXME: Extract depth only!
+			*(to++) = *(from++);
 		}
+    }
+    // We're done with the texture so unlock it
+    texture->UnlockRect(0);
+    // Release the frame
+    sensor->NuiImageStreamReleaseFrame(depthstream, &imageFrame);
+}
+void KinectHandler::updateDepthAndPid(float* dest, char* pid) {
+	if (!sensor || !initialized) return;
+	static NUI_IMAGE_FRAME imageFrame;
+	static NUI_LOCKED_RECT LockedRect;
+	if (sensor->NuiImageStreamGetNextFrame(depthstream, 0, &imageFrame) < 0) return;
+	INuiFrameTexture* texture = imageFrame.pFrameTexture;
+
+    // Lock the frame data so the Kinect knows not to modify it while we're reading it
+    texture->LockRect(0, &LockedRect, NULL, 0);
+
+    // Make sure we've received valid data
+    if (LockedRect.Pitch != 0)
+    {
+        const USHORT* curr = (const USHORT*) LockedRect.pBits;
+        const USHORT* dataEnd = curr + (width*height);
+
+        while (curr < dataEnd) {
+			*dest++ = NuiDepthPixelToDepth(*curr)/1000.f;
+			*pid++ = NuiDepthPixelToPlayerIndex(*curr);
+			++curr;
+        }
     }
     // We're done with the texture so unlock it
     texture->UnlockRect(0);
@@ -120,6 +148,9 @@ bool KinectHandler::updateSkeleton() {
 				if (skeleton.eTrackingState == NUI_SKELETON_TRACKED) {			
 					for (int i = 0; i < NUI_SKELETON_POSITION_COUNT; ++i) {
 						skeletonPosition[i] = skeleton.SkeletonPositions[i];
+						if (skeleton.eSkeletonPositionTrackingState[i] == NUI_SKELETON_POSITION_NOT_TRACKED) {
+							skeletonPosition[i].z = -1; skeletonPosition[i].w = 1;
+						}
 					}
 					return true;
 				}
