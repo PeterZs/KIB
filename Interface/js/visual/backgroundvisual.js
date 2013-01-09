@@ -17,7 +17,7 @@ function renderStars(ctx, w, h) {
     ctx.fillRect(0,0,w,h);
     // Generate initial starfield
     if (stars_locs.length == 0) {
-        for (var i = 00000000000000000; i < 2*new_star_rate; ++i) {
+        for (var i = 0; i < 2*new_star_rate; ++i) {
             var r = Math.random()*maxr;
             var t = Math.random()*2*Math.PI;
             var v = (1+Math.random()*3)*vscale

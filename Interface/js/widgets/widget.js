@@ -117,12 +117,13 @@ var saveColors = function() {
 
 var BgWidget = Widget('Background', 'background', [
         SelectProperty('avatar_style_picker', 'Avatar Style', 
-                [{id:'avatar_style_img',label:'Actual Image'},
+                [{id:'avatar_style_image',label:'Actual Image'},
                  {id:'avatar_style_silhouette',label:'Silhouette'},
                  {id:'avatar_style_skeleton',label:'Skeleton'},
                  {id:'avatar_style_polygon',label:'Polygons'}]),
         SelectProperty('bg_style_picker', 'Background Style', 
-                [{id:'bg_style_gradient',label:'Gradient',change:showColor2},
+                [{id:'bg_style_image',label:'Image',change:showColor2},
+                 {id:'bg_style_gradient',label:'Gradient',change:showColor2},
                  {id:'bg_style_solid',label:'Solid Color',change:showColor2},
                  {id:'bg_style_stars',label:'Starfield',change:showColor2},
                  {id:'bg_style_psychedelic',label:'Psychedelic',change:showColor2}]),
