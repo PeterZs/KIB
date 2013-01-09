@@ -12,9 +12,15 @@
       "kiblet_trigger_info": "0:00"
     },
     "ball": {
-      "ball_visualization": "ball_vis_ball",
+      "ball_visualization": "ball_vis_none",
       "ball_color": "#00ff00 ",
       "ball_osc_msg": "/BallMessage"
+    },
+    "wave": {
+      "wave_visualization": "wave_vis_pie",
+      "wave_hands": "wave_hands_right",
+      "wave_color": "#00ff00 ",
+      "wave_osc_msg": "/WaveMessage"
     },
     "hands": {
       "hands_visualization": "hands_vis_neon",
