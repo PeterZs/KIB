@@ -4,12 +4,17 @@
       "avatar_style_picker": "avatar_style_silhouette",
       "bg_style_picker": "bg_style_stars",
       "bg_style_color": "#ff0000 #ff00ff ",
-      "fg_style_color": "#00ff00 "
+      "fg_style_color": "#990099 "
     },
     "kiblet": {
       "kiblet_name": "Untitled Kiblet",
       "kiblet_trigger": "kiblet_trigger_time",
       "kiblet_trigger_info": "0:00"
+    },
+    "ball": {
+      "ball_visualization": "ball_vis_ball",
+      "ball_color": "#00ff00 ",
+      "ball_osc_msg": "/BallMessage"
     },
     "hands": {
       "hands_visualization": "hands_vis_neon",

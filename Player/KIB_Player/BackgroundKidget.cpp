@@ -1,6 +1,5 @@
 #include "BackgroundKidget.h"
 
-static double M_PI = 3.1415926536;
 static double vscale = 0.0007;
 static double vconst = 0.005;
 static int new_star_rate = 180;
@@ -24,21 +23,8 @@ BackgroundKidget::BackgroundKidget(void)
 {
 }
 
-int parseHex(const std::string& s) {
-	int ret;
-	sscanf_s(s.c_str(), "%x", &ret);
-	return ret;
-}
-void parseColor(const std::string& s, unsigned char* rgb) {
-	for (int i = 0; i < 3; ++i) {
-		rgb[i] = (char) parseHex(s.substr(2*i+1,2));
-	}
-}
-
 BackgroundKidget::BackgroundKidget(Json::Value* v)
 {
-	OutputDebugString((*v)["avatar_style_picker"].asString().c_str());
-	OutputDebugString((*v)["bg_style_picker"].asString().c_str());
 	if ((*v)["avatar_style_picker"].asString() == "avatar_style_image") {
 		fgvis = FG_IMAGE;
 	} else if ((*v)["avatar_style_picker"].asString() == "avatar_style_silhouette") {
@@ -105,10 +91,6 @@ BackgroundKidget::~BackgroundKidget(void)
 {
 }
 
-static inline void drawLine(long* a, long* b, int aa, int bb) {
-	glVertex3f(a[aa], b[aa], -0.01f);
-	glVertex3f(a[bb], b[bb], -0.01f);
-}
 
 void BackgroundKidget::draw(const Vector4* skeletonPositions, unsigned char* rgb, float* depth, char* pid){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
