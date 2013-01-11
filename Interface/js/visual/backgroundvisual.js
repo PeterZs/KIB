@@ -8,6 +8,8 @@ var vscale = 0.0007;
 var vconst = 0.005;
 var new_star_rate = 150;
 var ns;
+var img = new Image();
+img.src = "static/room.jpg";
 //var new_star_rate = 200;
 
 function renderStars(ctx, w, h) {
@@ -83,6 +85,8 @@ function renderBg(widget, ctx, w, h) {
             ctx.fillRect(0,0,w,h);
         } else if (widget['bg_style_picker'] == 'bg_style_psychedelic') {
             renderPsychedelic(ctx, [c1, c2], w, h);
+        } else if (widget['bg_style_picker'] = 'bg_style_image') {
+            ctx.drawImage(img,0,0,w,h);
         }
     }
 }
@@ -143,7 +147,7 @@ function renderPolygonsAvatar(skeleton, ctx, color, w, h) {
 }
 
 function renderAvatar(widget, skeleton, ctx, w, h) {
-    if (widget['avatar_style_picker'] == 'avatar_style_img') {
+    if (widget['avatar_style_picker'] == 'avatar_style_image') {
         renderImageAvatar(skeleton, ctx, widget['fg_style_color'], w, h);
     } else if (widget['avatar_style_picker'] == 'avatar_style_silhouette') {
         renderSilhouetteAvatar(skeleton, ctx, widget['fg_style_color'], w, h);
