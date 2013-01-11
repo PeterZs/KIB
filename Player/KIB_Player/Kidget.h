@@ -50,6 +50,33 @@ public:
 		} 
 		glEnd(); 
 	}
+	void fillArc(float cx, float cy, float r, float start_angle, float arc_angle, int num_segments, float d=-0.01f) { 
+		float theta = arc_angle / float(num_segments - 1);//theta is now calculated from the arc angle instead, the - 1 bit comes from the fact that the arc is open
+
+		float tangetial_factor = tanf(theta);
+
+		float radial_factor = cosf(theta);
+
+	
+		float x = r * cosf(start_angle);//we now start at the start angle
+		float y = r * sinf(start_angle); 
+    
+		glBegin(GL_LINE_LOOP);//since the arc is not a closed curve, this is a strip now
+		for(int ii = 0; ii < num_segments; ii++)
+		{ 
+			glVertex3f(x + cx, y + cy, d);
+
+			float tx = -y; 
+			float ty = x; 
+
+			x += tx * tangetial_factor; 
+			y += ty * tangetial_factor; 
+
+			x *= radial_factor; 
+			y *= radial_factor; 
+		} 
+		glEnd(); 
+	}
 protected:
 	std::string oscname;
 

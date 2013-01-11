@@ -34,7 +34,7 @@ void BallKidget::sendOSC(osc::OutboundPacketStream& p, const Vector4* skeletonPo
 	const Vector4& r = skeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT];
 	if (isPositionValid(l) && isPositionValid(r)) {
 		p << osc::BeginMessage(oscname.c_str()) << 
-			dist(l,r) << atan2(l.y/l.w - r.y/r.w, l.x/l.w - r.x/r.w) <<
+			(float) dist(l,r) << (float) atan2(l.y/l.w - r.y/r.w, l.x/l.w - r.x/r.w) <<
 			osc::EndMessage;
 	}
 }

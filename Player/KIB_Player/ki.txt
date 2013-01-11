@@ -12,26 +12,14 @@
       "kiblet_trigger_info": "0:00"
     },
     "ball": {
-      "ball_visualization": "ball_vis_none",
+      "ball_visualization": "ball_vis_ball",
       "ball_color": "#00ff00 ",
       "ball_osc_msg": "/BallMessage"
-    },
-    "wave": {
-      "wave_visualization": "wave_vis_pie",
-      "wave_hands": "wave_hands_right",
-      "wave_color": "#00ff00 ",
-      "wave_osc_msg": "/WaveMessage"
     },
     "hands": {
       "hands_visualization": "hands_vis_neon",
       "hands_color": "#ff00ff ",
       "hands_osc_msg": "/HandsMessage"
-    },
-    "arc": {
-      "arc_discrete_slider": 2,
-      "arc_visualization": "arc_vis_button",
-      "arc_color": "#ff00ff #ff00ff ",
-      "arc_osc_msg": "/ArcMessage"
     }
   }
 ]

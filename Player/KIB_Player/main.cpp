@@ -40,8 +40,9 @@ int main(int argc, char* argv[]) {
 		int argport = atoi(argv[2]);
 		if (argport > 0) port = argport;
 	}
-	UdpTransmitSocket transmitSocket(IpEndpointName(address, port));
-	App* app = new KIPlayerApp(&root, &transmitSocket);
+	UdpTransmitSocket* transmitSocket = new UdpTransmitSocket(IpEndpointName(address, port));
+	printf("%s:%d", address, port);
+	App* app = new KIPlayerApp(&root, transmitSocket);
 	return app->onExecute();
 }
 
