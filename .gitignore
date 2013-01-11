@@ -76,3 +76,14 @@ packages/
 
 #Test files
 *.testsettings
+
+# Latex output
+Paper/*.aux
+Paper/*.ps
+Paper/*.log
+Paper/*.bbl
+Paper/*.blg
+Paper/*.out
+Paper/*.toc
+Paper/*.pdf
+
