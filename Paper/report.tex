@@ -1,0 +1,122 @@
+% Template for NIME 2013
+%
+% Modified by Kyogu Lee on 7 October 2012
+%
+% Modified by Georg Essl on 7 November 2011
+%
+% Based on "sig-alternate.tex" V1.9 April 2009
+% This file should be compiled with "nime2011.cls"
+%
+
+\documentclass{nime-alternate}
+
+\begin{document}
+%
+% --- Author Metadata here ---
+\conferenceinfo{NIME'13,}{May 27 -- 30, 2013, KAIST, Daejeon, Korea.}
+
+\title{KIB: Simplifying Gestural Instrument Creation using Widgets}
+
+%
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{1} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor Edward Zhang\\
+       \affaddr{Princeton University}\\
+       \affaddr{Princeton, NJ}\\
+       \email{edwardz@princeton.edu}
+}
+\maketitle
+\begin{abstract}
+% FIXME: Abstract
+The Microsoft Kinect is a popular and versatile input device for creating musical interfaces.
+However, using the Kinect for such interfaces requires not only significant programming
+experience, but also complex geometry or machine learning techniques to translate joint
+positions into higher level gestures. We designed the Kinect Instrument Builder (KIB) to
+address these difficulties by structuring gestural interfaces as combinations of gestural
+widgets. KIB allows the user to design an instrument by combining simple gestural primitives,
+each with a set of simple but exciting visual feedback elements. After designing an instrument,
+KIB allows users to play the instrument, displaying visualizations and transmitting OSC 
+messages for synthesis or further mapping.
+\end{abstract}
+
+\keywords{Kinect, gesture, widgets, OSC, mapping}
+
+\section{Introduction}
+The Microsoft Kinect is a popular and versatile input device for creating musical interfaces.
+However, using the Kinect for such interfaces requires not only significant programming
+experience, but also complex geometry or machine learning techniques to translate joint
+positions into higher level gestures. We designed the Kinect Instrument Builder (KIB) to
+address these difficulties by structuring gestural interfaces as combinations of gestural
+widgets. KIB allows the user to design an instrument by combining simple gestural primitives,
+each with a set of simple but exciting visual feedback elements. After designing an instrument,
+KIB allows users to play the instrument, displaying visualizations and transmitting OSC 
+messages for synthesis or further mapping.
+%FIXME: Introduction
+\section{Background}
+\subsection{Widget-based Interface Design}
+\subsection{Gestural Widgets}
+%FIXME: Backgroud
+\section{Implementation}
+%FIXME: Implementation
+KIB consists of two distinct applications. The instrument design interface is a web
+application that allows the user to rapidly construct a widget-based instrument. The user
+can save the resulting instrument and open it using the performance interface.
+\subsection{Instrument Design Interface}
+\subsection{Performance Interface}
+\section{Evaluation}
+%FIXME: Evaluation
+\section{Discussion}
+%FIXME: Discussion
+\section{Conclusion}
+%FIXME: Conclusion
+\end{document}  % This is where a 'short' article might terminate
+
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+\bibliographystyle{abbrv}
+\bibliography{kib-references}  % sigproc.bib is the name of the Bibliography in this case
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+%
+% ACM needs 'a single self-contained file'!
