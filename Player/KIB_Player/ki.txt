@@ -18,7 +18,7 @@
     },
     "hands": {
       "hands_visualization": "hands_vis_neon",
-      "hands_color": "#ff00ff ",
+      "hands_color": "#ff0000 ",
       "hands_osc_msg": "/HandsMessage"
     }
   }

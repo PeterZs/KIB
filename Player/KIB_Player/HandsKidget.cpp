@@ -45,8 +45,12 @@ void HandsKidget::draw(const Vector4* skeletonPositions, unsigned char* rgb, flo
 	}
 	int nl = NUI_SKELETON_POSITION_HAND_LEFT;
 	int nr = NUI_SKELETON_POSITION_HAND_RIGHT;
-	float radius = 20;
-	glColor4f(color[0]/255.f, color[1]/255.f, color[2]/255.f, 0.5);
-	fillArc(px[nl], py[nl], radius, 0, 2*M_PI, 50, -0.1);
-	fillArc(px[nr], py[nr], radius, 0, 2*M_PI, 50, -0.1);
+	float radius = 40;
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glColor4f(color[0]/255.f, color[1]/255.f, color[2]/255.f, 0.6);
+	fillArc(px[nl], py[nl], radius, 0, 2*M_PI, 50, -0.1, color[0]/255.f, color[1]/255.f, color[2]/255.f, 0.);
+	glColor4f(color[0]/255.f, color[1]/255.f, color[2]/255.f, 0.6);
+	fillArc(px[nr], py[nr], radius, 0, 2*M_PI, 50, -0.1, color[0]/255.f, color[1]/255.f, color[2]/255.f, 0.);
+	glDisable(GL_BLEND);
 }
