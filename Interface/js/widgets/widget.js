@@ -126,7 +126,8 @@ var BgWidget = Widget('Background', 'background', [
                  {id:'bg_style_image',label:'Image',change:showColor2},
                  {id:'bg_style_gradient',label:'Gradient',change:showColor2},
                  {id:'bg_style_solid',label:'Solid Color',change:showColor2},
-                 {id:'bg_style_psychedelic',label:'Psychedelic',change:showColor2}]),
+                 //{id:'bg_style_psychedelic',label:'Psychedelic',change:showColor2}
+                 ]),
         ColorProperty('bg_style_color', 'Background Color', '#ff0000', saveColors, 2),
         ColorProperty('fg_style_color', 'Foreground Color', '#ff3333', saveColors),
     ], 'default');
