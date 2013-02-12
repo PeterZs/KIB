@@ -9,13 +9,13 @@
 %
 
 \documentclass{nime-alternate}
-
+\usepackage{flushend}
 \begin{document}
 %
 % --- Author Metadata here ---
 \conferenceinfo{NIME'13,}{May 27 -- 30, 2013, KAIST, Daejeon, Korea.}
 
-\title{KIB: Simplifying Gestural Instrument Creation using Widgets}
+\title{KIB: Simplifying Gestural Instrument Creation Using Widgets}
 
 %
 % You need the command \numberofauthors to handle the 'placement
@@ -81,12 +81,15 @@ techniques to turn skeletal data into a form suitable for use in musical interfa
 
 In order to simplify this process, we designed the Kinect Instrument Builder (KIB) around the
 concept of gestural widgets. Widget-based interfaces have been fairly successful for multitouch
-surfaces, especially in commercial systems such as in touchOSC\footnote{http://hexler.net/software/touchosc}. In these interfaces, intuitive visual elements provide feedback for interactions
+surfaces, especially in commercial systems such as in TouchOSC\footnote{http://hexler.net/software/touchosc}. In these interfaces, intuitive visual elements provide feedback for interactions
 with knobs, sliders, buttons, and more abstract widgets; each widget sends its own OSC messages
 which can be used in sound synthesis software, such as ChucK, PureData, or Max/MSP. By applying
 the same principles to gestural interfaces that use the Microsoft Kinect, we hope to make gestural
 instrument design simpler and more accessible. 
 \section{Background}
+Many systems for designing user interfaces make use of widgets, especially for multitouch interactions. However, very few systems
+extend this generic widget-based design to in-air gestural interfaces. In this section, we briefly outline previous work on widget-based
+interface design systems, both in academic works as well as in commercial works, and then describe some gestural widget systems.
 \subsection{Widget-based Interface Design}
 The physical controls used in sound editing systems form the inspiration for multitouch
 widget-based interfaces such as Argos \cite{diakopoulos2010argos}, TouchOSC, 
@@ -95,7 +98,8 @@ input interfaces and do not on their own perform any sound synthesis; they commu
 protocols such as MIDI and OSC \cite{osc}.
 
 The JazzMutant Lemur, released in 2005, was the
-first successful commercial multitouch widget-based system. Lemur was based around
+first successful commercial multitouch widget-based system, and was used in several professional performances. 
+Lemur was based around
 a custom-built multitouch device. Lemur allowed users to design their own interfaces
 on the desktop and then interact with these interfaces on the touchscreen. In
 addition to physically inspired widgets such as buttons and sliders, Lemur also provided
@@ -107,14 +111,14 @@ application that allows users to design interfaces out of combinations of widget
 multitouch mobile devices. Its low cost and availability for consumer devices running iOS and Android have
 made the specialized capabilities of the JazzMutant Lemur accessible to everyone.
 
-Konkreet Performer moves away from the physically based sliders and knobs of TouchOSC and the
+Konkreet Performer moves away from the physically based sliders and knobs of TouchOSC and 
 Lemur, instead focusing their interface on a new type of widget. A single input element consists of several
 individual nodes; these nodes can be rotated, moved, or zoomed. Each property of each node is an independent variable sent over OSC or MIDI. Konkreet Performer places a high importance on visual feedback, both
 as a performer tool and as an audience engagement mechanism. It allows users to 
 customize the appearance of the nodes and elements onscreen. Konkreet also is developing a 
 separate application, Konkreet Visualizer, to augment visual elements of a musician's interaction with Konkreet Performer for an audience.
 
-Konkreet's focus on visualization raises an important point: visual feedback is
+Konkreet's focus on visualization illustrates an important point: visual feedback is
 vital for the users of natural user interfaces \cite{bravenuiworld}. Using in-air controllers like the Kinect
 makes it difficult for the user to perceive how their gestures are being sensed -- if an input has no effect, is it
 a faulty application or was the gesture performed incorrectly? Feedback is important not only for the performer, but
@@ -122,7 +126,7 @@ also for audiences when performers are using unfamiliar interfaces, so that audi
 between the performer and the sounds that are produced. KIB shares Konkreet's high priority on visual feedback, both for the performer and the audience. 
 
 In addition to commercial products, several academic systems have been developed to explore the capabilities of multitouch
-widget-based systems. In contrast to existing commercial systems, Control \cite{roberts2011control} was designed for maximum 
+widget-based systems. In contrast to existing systems, Control \cite{roberts2011control} was designed for maximum 
 scriptability, with interfaces and logic written using web technologies such as HTML, CSS, and Javascript. 
 Control also takes advantage of the many sensors on mobile devices such
 as the microphone and accelerometer, in addition to the multitouch screen. In a later work, Control is 
@@ -130,10 +134,18 @@ extended to automate the connection between an instance of Control and a synthes
 or SuperCollider\footnote{http://supercollider.sourceforge.net/} \cite{roberts2012mobile}.
 
 \subsection{Gestural Widgets}
-Gestural control systems are fairly new and few works conceptualize gestural interactions in terms of widgets. Berthaut et al investigate 3D widgets in virtual environments for musical
-interfaces, but are focused on interaction within immersive virtual environments \cite{berthaut2011interacting}. That system uses a Wii remote to provide tactile feedback through vibration,
+\begin{figure}
+	\centering
+		\includegraphics[width=0.6\columnwidth]{figures/icons.png}
+	\caption{Icons for streaming widgets. a) Arc widget, b) Hands widget, c) Ball widget
+    d) Wave widget e) Body widget}
+	\label{fig:widgeticons}
+\end{figure}
+
+Gestural control systems are fairly new and few works conceptualize gestural interactions in terms of widgets. Berthaut et al investigated 3D widgets in virtual environments for musical
+interfaces, but focused on interaction within immersive virtual environments \cite{berthaut2011interacting}. Berthuat's system used a Wii remote to provide tactile feedback through vibration,
 audio feedback through a small speaker, and input through buttons, orientation, and position. The combination of immersive visual feedback and tactile feedback made the abstraction
-of interacting with geometric widgets more temporallly accurate.
+of interacting with geometric widgets more temporally accurate.
 
 The EyesWeb system \cite{camurri2000eyesweb}, a block-based graphical development environment for building
 interactive systems, includes a gesture recognition toolkit that can perform higher level
@@ -164,22 +176,18 @@ can save the resulting instrument and play it using the performance interface. T
 for both components is open-source and available on GitHub\footnote{[URL removed for anonymization]}.
 \subsection{Gestural Widgets}
 Since the central concept of KIB is the gestural widget, the set of widgets must be chosen
-carefully. We provided seven simple widget types; these types can be divided into streaming
+carefully. We have provided seven simple widget types; these types can be divided into streaming
 widgets, which provide data updates at every frame of Kinect data, and instantaneous widgets,
 which trigger once a certain event happens. The user can control several parameters for each widget
-that affect its visualization (for example, color and style) or behavior (for example, output granularity).
-\begin{figure}
-	\centering
-		\includegraphics[width=0.6\columnwidth]{figures/icons.png}
-	\caption{Icons for streaming widgets. a) Arc widget, b) Hands widget, c) Ball widget
-    d) Wave widget e) Body widget}
-	\label{fig:widgeticons}
-\end{figure}
-
+that affect its visualization (e.g. color and style) or behavior (e.g. output granularity).
 \begin{figure*}
 	\centering
 		\includegraphics[width=1\textwidth]{figures/kib.png}
-	\caption{Instrument design interface}
+	\caption{Instrument design interface. The image on the left side shows the visualization for the current kiblet. Underneath this image is a list of
+    all kiblets in the Kinect instrument. Kiblet management, including saving, adding, and removing kiblets, is accomplished via the buttons in the lower right.
+    The active widgets in the 
+    curent kiblet can be toggled by clicking the appropriate buttons on the upper right side. Each widget has settings that can be edited in the large
+    accordion panel on the right side. This panel is also where kiblet settings, such as triggering conditions and background visualizations, can be edited.}
 	\label{fig:interface}
 \end{figure*}
 
@@ -187,12 +195,11 @@ that affect its visualization (for example, color and style) or behavior (for ex
 \begin{itemize}
 \item The \textbf{Arc} widget can be used as a combination of a streaming and instantaneous widget.
 This widget places an arch around the user that is 
-activated when their arms are at full extension. Although tiring, this makes it easier for the 
-user to feel when the widget is activated. The arch can be divided into several sections (as in
-Figure~\ref{fig:widgeticons}a); if the arm activates the arc inside one of these sections, an
+activated when the user's arms are at full extension. The arch can be divided into several sections as in
+Figure~\ref{fig:widgeticons}a; if the arm activates the arc inside one of these sections, an
 appropriate instantaneous event is generated. If the arc is not divided, then the widget will
 stream the angle at which each arm intersects the arc.
-\item The \textbf{Hands} widget simply streams the raw coordinates from the Kinect skeletal 
+\item The \textbf{Hands} widget simply streams the raw spatial coordinates of the user's hands from the Kinect skeletal 
 data to the synthesis engine. We chose to use this raw data because the hands are the
 most important body part for performing gestures, and raw coordinates are a versatile way to
 create simple continuous mappings.
@@ -242,14 +249,14 @@ Wave & Continuous & f f & Angle between the horizontal and the right and left fo
 Ball & Continuous & f f & Distance between hands, and the angle between the hands
 and the horizontal\\ \hline
 Body & Continuous & f & Angle between the vertical and the line between the head and hips\\ \hline
-Punch & Instantaneous & None & N/A \\ \hline
-Clap & Instantaneous & None & N/A \\ \hline
+Punch & Instantaneous & One-off event & N/A \\ \hline
+Clap & Instantaneous & One-off event & N/A \\ \hline
 \end{tabular}
 \label{tab:osc}
 \end{table*}
 We refer to a combination of one or more active widgets, including each widget's associated visualizations, as a 
 \textit{kiblet}. A complete performance with a Kinect instrument might involve a series 
-of kiblets, each active at different times; thus a Kinect instrument is composed of one or more Kiblets. 
+of kiblets, each active at different times; thus a Kinect instrument is composed of one or more kiblets. 
 The performer switches between kiblets via a
 configurable trigger system. Kiblets can be triggered to activate at a certain time during the
 performance, upon a certain KIB widget event such as a Punch, or when the performance interface
@@ -262,10 +269,8 @@ widgets active at once greatly increases complexity, especially since most widge
 are interdependent because of their reliance on hand position.
 This can easily overload both the performer and the audience.
 However, having too few widgets limits the range of possibilities for a long
-performance. Switching between interfaces is a way to combine the simplicity of
-fewer widgets while keeping the flexibility of all of KIB's widgets available for a performance. 
-TouchOSC provides several interfaces that the user can easily switch between during performance
-as well.
+performance. Switching between interfaces is a way to leverage the simplicity of
+a few widgets while keeping the flexibility of all of KIB's widgets available for a performance. 
 
 \subsection{Instrument Design Interface}
 The instrument design interface is a web interface, shown in Figure~\ref{fig:interface}. It is written in Javascript,
@@ -275,8 +280,9 @@ with rich interactive elements. The instrument design interface can be accessed 
 One side of the interface provides an approximate visualization of the current kiblet. It shows the visual
 elements for the background and user avatar, as well as any visualizations for the widgets
 in the current kiblet. This interface is also interactive -- the user can drag the avatar's head or hands
-into different positions to see how the visualization changes with user movement in performance. A list of the kiblets in the current instrument is displayed under the visualization, so
-that the user can switch between kiblets.
+into different positions to see how the visualization changes with user movement in performance.
+A list of the kiblets in the current instrument is displayed under the visualization, so
+that the user can switch between kiblets during editing.
 
 The other side of the interface allows the user to configure the kiblet, widgets, and visualization.
 Buttons depicting the available widgets are displayed at the top of the window; these buttons will be
@@ -290,7 +296,7 @@ file is encoded in JSON and is used as input to the performance interface.
 \subsection{Performance Interface}
 
 The performance interface is a Windows application written in C++. It communicates with the Kinect during usage of the gestural instrument,
-displaying visualizations of the interaction and broadcasting OSC messages for sound synthesis. Unfortunately, the Kinect
+displaying visualizations of the interaction and broadcasting OSC messages for sound synthesis. The Kinect
 for Windows SDK is not cross-platform, and other Kinect APIs such as freenect\footnote{http://openkinect.org/wiki/Main\_Page} and OpenNI\footnote{http://www.openni.org/} do not yet support
 the Kinect for Windows sensor. Therefore the KIB performance interface is currently restricted
 to running on Microsoft Windows. The performance application uses the SDL library\footnote{http://www.libsdl.org/} and OpenGL
@@ -302,12 +308,12 @@ each kiblet are registered. At each frame of data from the Kinect, each widget i
 has the opportunity to process the Kinect data and use it to render a visualization and send an OSC message. 
 These messages have a standardized form outlined in Table~\ref{tab:osc}. While outgoing messages are
 sent at the Kinect's 30Hz data rate, KIB examines timing and incoming OSC events at higher rates 
-to determine if conditions for triggering a kiblet change or the end of the performance
+to determine if conditions for triggering a change of kiblet or the end of the performance
 are present.
 While the visualizations for widgets will generally use only the skeletal data given by the
 Kinect SDK, the background and user avatar visualizations can use the actual RGB or depth streams
 that the Kinect provides; for example, the user avatar can display the performer's silhouette as
-sensed by the Kinect against a virtual background, much like the green-screen technique used in films. 
+sensed by the Kinect against a virtual background, much like the green-screen technique used in films.
 
 The performance interface is currently very simple, since settings and system control is all predetermined
 during the design of the Kinect instrument. We could improve the performance interface by
@@ -318,39 +324,35 @@ These were issues we encountered when actually
 using the interface, since we required a person operating the computer to handle these tasks, in
 addition to a performer using the instrument.
 \section{Evaluation and Discussion}
+To evaluate KIB, we examined absolute performance to quantitatively analyze its usefulness as a real-time system. We then
+performed a small user study to understand how musicians might use KIB and to gain insight into gestural interface design.
 \subsection{System Performance}
 The Kinect for Windows sensor provides data at a peak rate of 30 frames per second. We ran
 the KIB performance interface on a quad-core 2.70GHz processor with 6GB of RAM, using a
 1GB Nvidia NVS4200M graphics card running at 1.6GHz. KIB's
 computation time was negligible, less than 5ms per frame, since each kiblet requires only at
-most a single set of geometric calculations. Rendering times were below 25ms per rendered
-frame; however, since the system does not every Kinect frame this did not affect
-data latency.
+most a single set of geometric calculations. Each rendered frame took below 25ms to render; however,
+since the system renders graphics in parallel with data processing rather than upon every frame of data,
+this did not affect latency.
 
 Livingston et al found that latency in the Xbox Kinect's skeletal tracking module
 averaged between 100 and 200 ms while
 tracking a single user \cite{livingston2012performance}. We expect the Kinect for Windows
-sensor to have as good or better skeletal tracking performance than the Xbox version. Although
+sensor to have as good or better skeletal tracking than the Xbox version. Although
 this latency is not ideal for musical interactivity, we found during prototyping that this
-latency only affected the use of instantaneous widgets. Thus, we adjusted the thresholds
-manually to achive the sense of interactivity. Future versions of KIB will allow the user to
+latency only affected the use of instantaneous widgets. Thus, we adjusted the activation distance thresholds
+manually to achieve the sense of interactivity. Future versions of KIB will allow the user to
 control these thresholds.
 \subsection{User Study}
 Four subjects experimented with the prototype instrument design interface
 and played pre-constructed instruments with prepared ChucK synthesis scripts using the performance interface.
 The users were all members of a graduate-level course on interactive music systems. They all had
 experience in designing digital musical instruments, including synthesis and mapping. 
-We conducted informal interviews to investigate four primary sets of questions:
-\begin{enumerate}
-\item Is the decomposition of gestural interactions into widgets a useful abstraction? Is it easy to understand?
-\item What sorts of gestures make good primitives? In particular, are the widgets presented in KIB a good starting point?
-\item What sorts of instruments and interactions does widget-based design lend itself to? What role does the visualization
-play in these situations?
-\item From a holistic perspective, is the KIB system easy to use for creating gestural instruments?
-\end{enumerate}
+We conducted informal interviews to investigate four primary sets of questions.
 
-All people interviewed understood and supported the decomposition of gestural interfaces
-into standardized widgets, as opposed to the design new interaction methods for
+\textbf{Is the decomposition of gestural interactions into widgets a useful abstraction? Is it easy to understand?}
+All interviewed individuals understood and supported the decomposition of gestural interfaces
+into standardized widgets, as opposed to the design of new interaction methods for
 new interfaces. Most users cited ``speeding development'' and ``helping people who don't know
 how to [define and recognize gestures] on their own'' as the main benefits of widget-based systems. 
 Two of the users commented that the
@@ -358,23 +360,26 @@ flexibility of KIB's hierarchical widget-kiblet structure would even be valuable
 they could focus on the conceptual exploration of widget combinations instead of the low-level details of 
 implementation. One user commented on
 having a ``common gestural language'' for gestural interfaces, both for music and other domains,
-likening the concept to the ubiquity of the desktop window paradigm or the mouse pointer paradigm. Another
+likening the concept to the ubiquity of the desktop window or the mouse pointer. Another
 user commented that restricting the available gestures might hinder the discovery of better gesture
 sets; this indicated that the user understood the importance of designing a suitable set of
 gestures before deploying a system based around them.
 
-In terms of widget choices, users approved of the gestural widgets presented in KIB. Two people stated that they would likely want a larger
-selection after creating and using Kinect-based instruments for awhile, and indicated interest in developing
+\textbf{What sorts of gestures make good primitives? In particular, are the widgets presented in KIB a good starting point?}
+Users generally approved of the gestural widgets presented in KIB. Two people stated that they would likely want a larger
+selection after creating and using Kinect-based instruments for awhile and indicated interest in developing
 their own widgets both for themselves and other KIB users. There were several 
 suggestions for alternate widgets, such as dance-like body rotations and specialized pose recognition; however there
 were no common preferences and most users were satisfied with the primarily arm-based widgets presented
-in KIB. One user expressed a desire to increase the complexity of kiblet transition triggering conditions,
-for example focusing on instantaneous events when the user was closer to the Kinect while using streaming
-widgets when the user was farther from the Kinect. This was a useful observation, since in our prototype implementation
+in KIB. One user wanted to increase the complexity of kiblet transition triggering conditions,
+for example focusing on instantaneous events when the user is closer to the Kinect while using streaming
+widgets when the user is farther from the Kinect, enabling a more complex interaction than individual widgets can achieve. This was a useful observation, since in our prototype implementation
 we had not devoted much attention to trigger conditions.
 
+\textbf{What sorts of instruments and interactions does widget-based design lend itself to? What role does the visualization
+play in these situations?}
 During discussions about the possibilities of widget-based instruments, the Vmotion system was mentioned many
-times, since it had been discussed on a course website. The Vmotion performance demonstrated the flexibility
+times, since it had been discussed during the coourse. The Vmotion performance demonstrated the flexibility
 of the hierarchical widget-kiblet structure, and participants did not think of any alternate ways to use gestural widgets.
 When questioned about the impact of the Vmotion performance, people consistently believed that the visuals were in 
 fact the most compelling part. Viewers often spoke in terms of the music enhancing the visualization, rather than the
@@ -389,22 +394,27 @@ made KIB's instruments more musically valuable than Vmotion; Vmotion's widgets a
 intimately tied to its musical style and setting, whereas KIB's products appeared to be more versatile and usable
 as instruments across performances.
 
-With respect to KIB, all users were satisfied with the ``logical'' instrument design interface, 
+\textbf{From a holistic perspective, is the KIB system easy to use for creating gestural instruments?}
+All users were satisfied with KIB's ``logical'' instrument design interface, 
 and were easily able to understand the concept of multiple widgets forming kiblets, which 
-themselves form an instrument. However, users had many suggestions for improvement to the system.
+themselves form an instrument. However, users had many suggestions for improvements to the system.
 One point that all users raised was the ``inconvenient'' separation of the performance and design interfaces. Users
 had to switch back and forth between the two interfaces during the design process.
 This separation was a practical consideration, since the web interface was more suited to rapid prototyping; in
-the future KIB will present a unified interface for design and performance. One user commented that there were too
-many visualization options, and would have preferred a global theme setting rather than configuring each visualization
-individually. Future versions of KIB will incorporate many of the points raised by our user study.
+the future KIB will present a unified interface for design and performance. 
+Another barrier to using KIB in a full DMI design workflow is the step between the OSC output of KIB and the sound synthesis engine. Although
+KIB helps to solve the problem of translating joint coordinates into meaningful gestures, it is still difficult to map the space
+of outputs of KIB (e.g. physical coordinates of hands) into sound synthesis parameters (e.g. frequency). Other tools such as
+the Wekinator \cite{fiebrink2009meta} are valuable for bridging this gap.
+Future versions of KIB will incorporate many of the suggestions raised in our user study.
+
 
 \section{Conclusions and Future Work}
 The KIB system makes designing gestural instruments simple and straightforward both for experienced
 and inexperienced DMI designers. It does this by introducing the concept of gestural widgets. 
 Users believed that decomposing gestural interactions into a set
 of primitives was useful for reducing the barriers to entry in DMI creation, speeding up the design process,
-and standardizing gestural instrument interfaces. KIB's hierarchical structuring of gestural instruments as being composed
+and standardizing gestural instrument interfaces. KIB's hierarchical structure, involving gestural instruments composed
 of kiblets, themselves combinations of widgets, guarantees flexibility in instrument design while maintaining simplicity
 in interaction modalities. The KIB instrument design system provides a logical graphical interface for designing
 such instruments, and the KIB performance interface provides a simple system for visualizing widgets and sending gestural data
@@ -414,16 +424,11 @@ The KIB system is still in a prototype form. Several widgets do not have any vis
 Based on results from interviews, we found that having complex and impressive visual effects
 was even more important than we first believed. Fortunately, it is relatively easy to implement additional visualizations for 
 each kiblet to the instrument design and performance interfaces. This is one simple way that the effectiveness of KIB
-can be improved. Another area of investigation is the process of switching between kiblets; making a richer trigger system for kiblet
+can be improved. We can also improve the instrument creation workflow by integrating the design and performance interfaces. Finally, we would like to improve the process of switching between kiblets; making a richer trigger system for kiblet
 transitions would increase the flexibility of instruments designed using KIB.
 
-Another barrier to using KIB in a full DMI design workflow is the step between the OSC output of KIB and the sound synthesis engine. Although
-KIB helps to solve the problem of translating joint coordinates into meaningful gestures, it is still difficult to map the space
-of outputs of KIB (e.g. physical coordinates of hands) into sound synthesis parameters (e.g. frequency). Additional tools such as
-the Wekinator \cite{fiebrink2009meta} are valuable for bridging this gap.
-
 On a higher level, we want to investigate what types of gestures form an intuitive and usable set of primitives for natural
-user interfaces. Because gestural interfaces are quite new, many disparate types of gestural sensors exist and there is no
+user interfaces. Because gestural interfaces are quite new, many disparate types of gestural sensors exist, and there is no
 unifying application or gesture set in general use. KIB's design makes it straightforward to add
 additional widgets to the interface, but the choice of what gestures should be added, if any, is still unclear. By
 experimenting with KIB's gestural widgets, we hope to discover the characteristics of good
